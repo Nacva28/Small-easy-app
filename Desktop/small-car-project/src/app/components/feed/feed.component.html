@@ -1,0 +1,27 @@
+<h2 style="text-align: center">List of Cars</h2>
+<div
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding: 0 6rem;
+  "
+>
+  <div
+    *ngFor="let car of carsDataService.carList"
+    class="card"
+    style="width: 18rem"
+  >
+    <img class="card-img-top" [src]="car.image" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title">{{ car.title }}</h5>
+      <p class="card-text">
+        {{ car.description }}
+      </p>
+      <p class="card-text">{{ car.price }}</p>
+      <a [routerLink]="['/feed',car.id]" class="btn btn-primary">Show Details</a>
+    </div>
+  </div>
+</div>
