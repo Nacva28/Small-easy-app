@@ -1,1 +1,122 @@
-<p>train-list works!</p>
+<div>
+  <div class="img-of-boy">
+    <img
+      width="1100px"
+      height="500px"
+      src="./assets/images/line-train.avif"
+      alt=""
+    />
+  </div>
+
+  <div class="list-groups">
+    <div class="btn-group" ngbDropdown>
+      <button
+        class="btn btn-secondary"
+        id="dropdownMenuButton1"
+        ngbDropdownToggle
+      >
+        {{ selectedCategories["dropdown1"] || "From" }}
+      </button>
+      <ul
+        class="dropdown-menu"
+        aria-labelledby="dropdownMenuButton1"
+        ngbDropdownMenu
+      >
+        <li *ngFor="let category of categoryData" ngbDropdownItem>
+          <a
+            class="dropdown-item"
+            href="#"
+            (click)="onCategorySelected($event, category, 'dropdown1')"
+            >{{ category.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="btn-group" ngbDropdown>
+      <button
+        class="btn btn-secondary"
+        id="dropdownMenuButton2"
+        ngbDropdownToggle
+      >
+        {{ selectedCategories["dropdown2"] || "To" }}
+      </button>
+      <ul
+        class="dropdown-menu"
+        aria-labelledby="dropdownMenuButton2"
+        ngbDropdownMenu
+      >
+        <li *ngFor="let category of categoryData" ngbDropdownItem>
+          <a
+            class="dropdown-item"
+            href="#"
+            (click)="onCategorySelected($event, category, 'dropdown2')"
+            >{{ category.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group" ngbDropdown>
+      <button
+        class="btn btn-secondary"
+        id="dateDropdownButton"
+        ngbDropdownToggle
+      >
+        {{
+          selectedDate
+            ? selectedDate.day +
+              "/" +
+              selectedDate.month +
+              "/" +
+              selectedDate.year
+            : "Departure Time"
+        }}
+      </button>
+      <ul
+        class="dropdown-menu"
+        aria-labelledby="dateDropdownButton"
+        ngbDropdownMenu
+      >
+        <li ngbDropdownItem>
+          <ngb-datepicker
+            [(ngModel)]="selectedDate"
+            (dateSelect)="onDateSelected($event)"
+            [minDate]="minDate"
+          ></ngb-datepicker>
+        </li>
+      </ul>
+    </div>
+    <div style="margin-bottom: 25px">
+      <label for="passengerInput"></label>
+      <input
+        type="number"
+        pattern="[1-9]*"
+        placeholder="Enter number of tickets"
+        class="form-control"
+        id="passengerInput"
+        [(ngModel)]="ticketQuantity"
+        (ngModelChange)="validateTicketQuantity()"
+      />
+    </div>
+    <div class="checks">
+      <div >
+        <button type="button" class="btn btn-outline-primary">Submit</button>
+      </div>
+      <div >
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="invalidCheck"
+            required
+          />
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+          <div class="invalid-feedback">You must agree before submitting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
