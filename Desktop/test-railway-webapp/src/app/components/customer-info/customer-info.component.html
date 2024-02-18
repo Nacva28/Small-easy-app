@@ -1,1 +1,150 @@
-<p>customer-info works!</p>
+<div class="container">
+  <div>
+    <div class="ticket-main">
+      <h2>Ticket</h2>
+      <div class="ticket-info">
+        <div>
+          <p>Number: {{ selectedTrain?.number }}</p>
+          <p>Name: {{ selectedTrain?.name }}</p>
+        </div>
+        <div>
+          <p>Departure Time: {{ selectedTrain?.departure }}</p>
+          <p>From: {{ selectedTrain?.from }}</p>
+        </div>
+        <div>
+          <p>Arrival Time: {{ selectedTrain?.arrive }}</p>
+          <p>To: {{ selectedTrain?.to }}</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Contact information</h2>
+      <div class="number-email">
+        <input
+          type="email"
+          style="padding: 10px; width: 400px; border-radius: 15px"
+          placeholder="12345@gmail.com"
+          name=""
+          id=""
+        />
+        <input
+          style="padding: 10px; width: 400px; border-radius: 15px"
+          type="text"
+          placeholder="(+995)598707707"
+        />
+      </div>
+      <br />
+      <div class="personal-data">
+        <h3>Passenger info</h3>
+        <form [formGroup]="passengerForm">
+          <div class="input-group">
+            <input formControlName="name" type="text" placeholder="Name" />
+            <input
+              formControlName="surname"
+              type="text"
+              placeholder="Surname"
+            />
+            <input
+              formControlName="personalNumber"
+              type="text"
+              placeholder="Personal Number"
+            />
+            <button style="border-radius: 15px" (click)="showWagonCategories()">
+              Choose Seat
+            </button>
+
+            <div class="category-name">
+              <ng-container *ngIf="showCategories">
+                <button
+                  *ngFor="let category of vagonCategories.slice(0, 3)"
+                  style="border-radius: 15px"
+                  type="button"
+                  (click)="onCategorySelected(category.name)"
+                >
+                  {{ category.name }}
+                </button>
+              </ng-container>
+            </div>
+            <br />
+          </div>
+        </form>
+        <br />
+        <div>
+          <div class="seat-train" *ngIf="selectedCategory">
+            <p>Selected Seat Category: {{ selectedCategory }}</p>
+
+            <div class="seats-container">
+              <div *ngFor="let row of seats" class="seat-row">
+                <div
+                  *ngFor="let seat of row"
+                  class="seat"
+                  [class.occupied]="seat.isOccupied" 
+       [style.background-color]="seat.isSelected ? 'blue' : (seat.isOccupied ? 'grey' : 'blue')" 
+       [style.border-radius.px]="15"
+       (click)="selectSeat(seat)">
+                
+                  {{ seat.number }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 10px"></div>
+        <div>
+          <br />
+          <div class="card-container">
+            <div class="card" style="width: 13.2rem">
+              <img
+                class="card-img-top"
+                src="./assets/images/bag.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Personal Item</h5>
+                <p class="card-text">Purse,small backpack,briefcase</p>
+                <p style="color: blue">Included</p>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                class="card-img-top"
+                src="./assets/images/briefcase.png"
+                alt="Card image cap"
+              />
+              <br />
+              <div class="card-body">
+                <h5 class="card-title">Carry-on bag</h5>
+                <p class="card-text">Fits overhead bin or under the seat</p>
+                <p style="color: blue">Included</p>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                class="card-img-top"
+                src="./assets/images/big-bag.png"
+                alt="Card image cap"
+              />
+              <br />
+              <div class="card-body">
+                <h5 class="card-title">Checked Bags</h5>
+                <p class="card-text">larges Bag Purse,small backpack</p>
+                <p style="color: red">Not Included</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="invoice">
+    <h3>Invoice</h3>
+    <div class="seat-price">
+      <p>Seat: {{ selectedSeat?.number }}</p>
+      <p>Price: {{ selectedSeat?.price }} (GEL)</p>
+    </div>
+    <br />
+    <button (click)="redirectToCardInfo()" type="submit">
+      Ticket Registration
+    </button>
+  </div>
+</div>

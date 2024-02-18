@@ -1,0 +1,71 @@
+.train-list {
+  margin-top: 20px;
+  padding: 20px 50px;
+  box-shadow: 10px 20px 20px 20px rgb(127, 146, 255);
+  background-color: rgba(233, 234, 244, 0.498);
+}
+.time-c {
+  border: 1px solid rgb(81, 81, 232);
+  border-radius: 10px;
+  padding: 7px 7px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  .span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.train-list-items {
+  list-style-type: none;
+  padding: 50px 100px;
+  width: 100%;
+}
+
+.train-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.train-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.train-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.train-details {
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.no-trains-message {
+  color: #ff0000;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.button {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+}
+.train-number {
+  border: 1px solid rgb(21, 12, 12);
+  color: white;
+  background-color: #f07979;
+  border-radius: 5px;
+  padding: 2px 6px 2px;
+}

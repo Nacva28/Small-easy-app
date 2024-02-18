@@ -1,0 +1,50 @@
+form {
+  margin-top: 50px;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-input {
+  display: grid;
+  place-items: center;
+  gap: 50px;
+  background-color: rgba(233, 234, 244, 0.498);
+  border: 1px solid black;
+  width: 1300px;
+  padding: 50px 50px;
+  height: 600px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    width: 500px;
+  }
+}
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    width: 550px;
+  }
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  padding: 5px 5px;
+  border-radius: 16px;
+  background-color: blue;
+  color: white;
+}
+.card{
+  background-color: rgb(152, 152, 249) !important;
+}

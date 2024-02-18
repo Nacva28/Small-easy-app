@@ -1,4 +1,28 @@
-<div *ngFor="let train of categoryList">
-  <p>From: {{ train.from }}</p>
-  <p>To: {{ train.to }}</p>
+<div class="container">
+  <div *ngIf="availableTrains.length > 0; else noTrains" class="train-list">
+    <h3>Available Trains from {{ fromStation }} to {{ toStation }}</h3>
+
+    <div>
+      <ul class="train-list-items">
+        <li *ngFor="let train of availableTrains" class="train-item">
+          <div class="train-info">
+            <div class="train-name">{{ train.name }}</div>
+            <div class="time-c">
+              <span>Departure Time: {{ train.departure }}</span>
+              <span>Arrival Time: {{ train.arrive }}</span>
+            </div>
+            <div class="train-details">
+              <span class="train-number">Train Number: {{ train.number }}</span>
+              <button (click)="redirectToCustomerInfo(train)" class="button">
+                Buy Ticket
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
+<ng-template #noTrains>
+  <p class="no-trains-message">No available trains for the selected route.</p>
+</ng-template>

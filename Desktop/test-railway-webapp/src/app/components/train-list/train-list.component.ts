@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Stations } from 'src/app/interfaces/stations';
 import { StationsService } from 'src/app/services/stations.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,12 +14,14 @@ import Swal from 'sweetalert2';
 export class TrainListComponent implements OnInit {
   selectedDate: NgbDate | null = null;
   minDate: NgbDate;
-  ticketQuantity: number | null = null;
   categoryData: Stations[] = [];
-  selectedCategories: { [key: string]: string } = {};
+  selectedCategories: { [key: string]: string } = {
+    from: '',
+    to: '',
+  };
 
   constructor(
-    private CategorystationPlace: StationsService,
+    private CategoryStationPlace: StationsService,
     private router: Router
   ) {
     const today = new Date();
@@ -34,61 +37,31 @@ export class TrainListComponent implements OnInit {
     );
   }
 
-  onCategorySelected(
-    event: Event,
-    category: Stations,
-    dropdownId: string
-  ): void {
-    event.preventDefault();
-    this.selectedCategories[dropdownId] = category.name;
-  }
-
-  onDateSelected(date: NgbDate): void {
-    this.selectedDate = new NgbDate(date.year, date.month, date.day);
-  }
-
-  onNavigate(event: Event): void {
-    event.stopPropagation();
-  }
   redirectToAvailableList(): void {
-    
     if (
-      !this.selectedCategories['dropdown1'] ||
-      !this.selectedCategories['dropdown2'] ||
+      !this.selectedCategories['from'] ||
+      !this.selectedCategories['to'] ||
       !this.selectedDate ||
-      !this.ticketQuantity ||
       !(document.getElementById('invalidCheck') as HTMLInputElement)?.checked
     ) {
-      
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Please fill out all the required fields.',
       });
     } else {
-      this.router.navigate(['/available-list']);
+      this.router.navigate(['/available-list'], {
+        queryParams: {
+          from: this.selectedCategories['from'],
+          to: this.selectedCategories['to'],
+        },
+      });
     }
   }
 
-  validateTicketQuantity(): void {
-    const maxTickets = 10;
-
-    if (this.ticketQuantity !== null) {
-      if (this.ticketQuantity > maxTickets) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You can buy only 10 tickets!',
-        });
-        this.ticketQuantity = null;
-      } else if (this.ticketQuantity <= 0) {
-        this.ticketQuantity = null;
-      }
-    }
-  }
-
+    
   ngOnInit(): void {
-    this.CategorystationPlace.getStationCategories().subscribe((response) => {
+    this.CategoryStationPlace.getStationCategories().subscribe((response) => {
       console.log(response);
       this.categoryData = response;
     });

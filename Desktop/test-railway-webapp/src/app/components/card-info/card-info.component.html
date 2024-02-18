@@ -1,0 +1,97 @@
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Price: {{ seatInfo?.price }} (GEL)
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name: {{ customerInfo?.name }}</li>
+    <li class="list-group-item">Surname: {{ customerInfo?.surname }}</li>
+    <li class="list-group-item">Personal Number: {{ customerInfo?.personalNumber }}</li>
+  </ul>
+</div>
+<form (ngSubmit)="formSubmitHandler(f)" #f="ngForm">
+  <div class="card-input">
+    <h2>Card Details</h2>
+    <div class="row">
+      <div class="col">
+        <input
+          name="firstName"
+          #username="ngModel"
+          minlength="3"
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          ngModel
+        />
+        <span
+          style="color: red; margin-left: 5px"
+          *ngIf="!username.valid && !username.untouched"
+        >
+          Please enter a valid first name (min length: 3)
+        </span>
+      </div>
+      <div class="col">
+        <input
+          name="lastName"
+          minlength="4"
+          #last="ngModel"
+          type="text"
+          class="form-control"
+          placeholder="Last name"
+          ngModel
+        />
+        <span
+          style="color: red; margin-left: 5px"
+          *ngIf="!last.valid && !last.untouched"
+        >
+          Please enter a valid Last name (min length: 4)
+        </span>
+      </div>
+    </div>
+    <div>
+      <div class="col">
+        <input
+          name="cardNumber"
+          minlength="16"
+          #card="ngModel"
+          type="text"
+          class="form-control"
+          placeholder="Card Number"
+          ngModel
+        />
+        <span
+          style="color: red; margin-left: 5px"
+          *ngIf="!card.valid && !card.untouched"
+        >
+          Please enter a valid card Number (length: 16)
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input
+          name="expiryDate"
+          maxlength="8"
+          pattern="\d{2}/\d{2}/\d{4}"
+          type="text"
+          class="form-control"
+          placeholder="MM/YY"
+          ngModel
+        />
+      </div>
+      <div class="col">
+        <input
+          name="cvc"
+          minlength="3"
+          type="text"
+          class="form-control"
+          placeholder="CVC"
+          ngModel
+        />
+      </div>
+    </div>
+    <div style="width: 150px; margin-top: 70px">
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
