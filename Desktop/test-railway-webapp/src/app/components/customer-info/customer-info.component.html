@@ -18,27 +18,27 @@
       </div>
     </div>
     <div>
-      <h2>Contact information</h2>
-      <div class="number-email">
-        <input
-          type="email"
-          style="padding: 10px; width: 400px; border-radius: 15px"
-          placeholder="12345@gmail.com"
-          name=""
-          id=""
-        />
-        <input
-          style="padding: 10px; width: 400px; border-radius: 15px"
-          type="text"
-          placeholder="(+995)598707707"
-        />
-      </div>
       <br />
       <div class="personal-data">
-        <h3>Passenger info</h3>
+        <h3>Passenger Contact Information</h3>
         <form [formGroup]="passengerForm">
+          <div class="number-email">
+            <input
+              formControlName="email"
+              type="email"
+              style="padding: 10px; width: 300px; border-radius: 15px"
+              placeholder="12345@gmail.com"
+            />
+            <input
+              style="padding: 10px; width: 400px; border-radius: 15px"
+              type="text"
+              placeholder="(+995)598707707"
+              formControlName="number"
+            />
+          </div>
           <div class="input-group">
             <input formControlName="name" type="text" placeholder="Name" />
+
             <input
               formControlName="surname"
               type="text"
@@ -78,11 +78,14 @@
                 <div
                   *ngFor="let seat of row"
                   class="seat"
-                  [class.occupied]="seat.isOccupied" 
-       [style.background-color]="seat.isSelected ? 'blue' : (seat.isOccupied ? 'grey' : 'blue')" 
-       [style.border-radius.px]="15"
-       (click)="selectSeat(seat)">
-                
+                  [class.occupied]="seat.isOccupied"
+                  [style.background-color]="
+                    seat.isSelected ? 'blue' : seat.isOccupied ? 'grey' : 'blue'
+                  "
+                  [style.border-radius.px]="15"
+                  (click)="selectSeat(seat)"
+                >
+               
                   {{ seat.number }}
                 </div>
               </div>
@@ -101,7 +104,7 @@
               />
               <div class="card-body">
                 <h5 class="card-title">Personal Item</h5>
-                <p class="card-text">Purse,small backpack,briefcase</p>
+                <p class="card-text">Purse, small backpack, briefcase</p>
                 <p style="color: blue">Included</p>
               </div>
             </div>
@@ -127,7 +130,7 @@
               <br />
               <div class="card-body">
                 <h5 class="card-title">Checked Bags</h5>
-                <p class="card-text">larges Bag Purse,small backpack</p>
+                <p class="card-text">Larges Bag Purse, small backpack</p>
                 <p style="color: red">Not Included</p>
               </div>
             </div>

@@ -16,7 +16,9 @@ import { AvailableListComponent } from './components/available-list/available-li
 import { CardInfoComponent } from './components/card-info/card-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { PdfComponent } from './components/pdf/pdf.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { TicketStatusComponent } from './components/ticket-status/ticket-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     AvailableListComponent,
     CardInfoComponent,
+    PdfComponent,
+    TicketStatusComponent,
      ],
   imports: [
     HttpClientModule,
@@ -37,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

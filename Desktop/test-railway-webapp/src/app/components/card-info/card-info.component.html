@@ -7,6 +7,8 @@
     <li class="list-group-item">Name: {{ customerInfo?.name }}</li>
     <li class="list-group-item">Surname: {{ customerInfo?.surname }}</li>
     <li class="list-group-item">Personal Number: {{ customerInfo?.personalNumber }}</li>
+    <li class="list-group-item">email: {{ customerInfo?.email }}</li>
+    <li class="list-group-item">Phone Number: {{ customerInfo?.number }}</li>
   </ul>
 </div>
 <form (ngSubmit)="formSubmitHandler(f)" #f="ngForm">
@@ -90,8 +92,8 @@
         />
       </div>
     </div>
-    <div style="width: 150px; margin-top: 70px">
-      <button type="submit">Submit</button>
+    <div style="width: 150px; ">
+      <button [routerLink]="['pdf']">Submit</button>
     </div>
   </div>
 </form>

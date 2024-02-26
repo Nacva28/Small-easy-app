@@ -1,6 +1,7 @@
 <div class="container">
   <div *ngIf="availableTrains.length > 0; else noTrains" class="train-list">
     <h3>Available Trains from {{ fromStation }} to {{ toStation }}</h3>
+    
 
     <div>
       <ul class="train-list-items">
@@ -13,6 +14,7 @@
             </div>
             <div class="train-details">
               <span class="train-number">Train Number: {{ train.number }}</span>
+              <span> {{selectedDate}}</span>
               <button (click)="redirectToCustomerInfo(train)" class="button">
                 Buy Ticket
               </button>

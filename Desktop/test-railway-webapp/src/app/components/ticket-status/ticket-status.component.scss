@@ -1,0 +1,23 @@
+.ticket {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+  label {
+    font-size: 25px;
+    color: blue;
+  }
+  input {
+    width: 400px;
+    height: 50px;
+    padding: 10px;
+  }
+  button {
+    height: 30px;
+    width: 100px;
+    background-color: blue;
+    color: white;
+  }
+}

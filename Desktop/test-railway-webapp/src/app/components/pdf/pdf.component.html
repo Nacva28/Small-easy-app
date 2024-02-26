@@ -1,0 +1,34 @@
+<div class="main-container">
+  <div class="ticket-container">
+    <div class="title">
+      <h2>Ticket Information</h2>
+    </div>
+    <div *ngIf="ticketRegistrationResponse">
+      <p>{{ ticketRegistrationResponse }}</p>
+    </div>
+    <div class="passenger-info">
+      <h3>Passenger Information</h3>
+      <p>Name: {{ customerInfo?.name || "N/A" }}</p>
+      <p>Surname: {{ customerInfo?.surname || "N/A" }}</p>
+      <p>Personal Number: {{ customerInfo?.personalNumber || "N/A" }}</p>
+    </div>
+
+    <div class="seat-info">
+      <h3>Seat Information</h3>
+      <p>Seat Number: {{ seatInfo?.seatNumber || "N/A" }}</p>
+      <p>Price: {{ seatInfo?.price ? seatInfo.price + " (GEL)" : "N/A" }}</p>
+    </div>
+    <div>
+      <h3>Ticket Information</h3>
+      <p>Ticket ID: {{ selectedSeatId || "No seat selected" }}</p>
+      <p>From: {{ from }}</p>
+      <p>To: {{ to }}</p>
+    </div>
+    <p>Download PDf to Register Ticket</p>
+  </div>
+
+  <div class="btn-container">
+    <button (click)="makePDf(responseText)">Download PDF</button>
+    <button (click)="navigateToHome()" style="background-color: blue">Home Page</button>
+  </div>
+</div>

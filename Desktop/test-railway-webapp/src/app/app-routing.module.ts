@@ -6,6 +6,8 @@ import { CustomerInfoComponent } from './components/customer-info/customer-info.
 import { TrainListComponent } from './components/train-list/train-list.component';
 import { AvailableListComponent } from './components/available-list/available-list.component';
 import { CardInfoComponent } from './components/card-info/card-info.component';
+import { PdfComponent } from './components/pdf/pdf.component';
+import { TicketStatusComponent } from './components/ticket-status/ticket-status.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
@@ -13,7 +15,8 @@ const routes: Routes = [
   { path: 'train-list', component: TrainListComponent },
   { path: 'available-list', component: AvailableListComponent },
   { path: 'card-info', component: CardInfoComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'pdf', component: PdfComponent },
+  { path: 'ticket-status/:ticketNumber', component: TicketStatusComponent },
 ];
 
 @NgModule({

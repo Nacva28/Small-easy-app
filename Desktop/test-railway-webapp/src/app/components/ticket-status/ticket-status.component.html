@@ -1,0 +1,12 @@
+<div class="ticket">
+  <label for="ticketNumber">Enter Ticket Number:</label>
+  <input type="text" id="ticketNumber" />
+  <button (click)="checkTicket()">Check</button>
+  <div *ngIf="ticketInfo">
+    <p>{{ ticketInfo }}</p>
+    <button (click)="deleteTicket()">Delete</button>
+  </div>
+  <div *ngIf="ticketNotFound">
+    <p>Ticket not found!</p>
+  </div>
+</div>
