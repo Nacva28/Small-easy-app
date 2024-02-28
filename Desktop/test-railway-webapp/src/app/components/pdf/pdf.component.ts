@@ -72,12 +72,12 @@ ticketRegistrationResponse: string = '';
   makePDf(responseText: string): void {
     let pdf = new jsPDF();
   
-    // Header
+   
     pdf.setFontSize(16);
     pdf.setTextColor(0, 0, 255);
     pdf.text('Ticket Information', 20, 20);
   
-    // Ticket Number
+    
     pdf.setFontSize(12);
     pdf.setTextColor(0, 0, 0);
     const uuidMatch = responseText.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
